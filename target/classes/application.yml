@@ -1,0 +1,43 @@
+# https访问
+server:
+  port: 8990
+  servlet:
+    context-path: /
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+
+spring:
+  # mysql数据源配置
+  datasource:
+    url: jdbc:mysql://192.168.1.211:3306/emergency_test?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Hongkong&rewriteBatchedStatements=true
+    username: root
+    password: Root@123_456
+    # driver-class-name: com.mysql.cj.jdbc.Driver
+    # 使用druid数据源
+    # type: com.alibaba.druid.pool.DruidDataSource
+  # 多环境配置
+  profiles:
+    active: dev
+
+  output:
+    ansi:
+      enabled: ALWAYS
+  graphql:
+    graphiql:
+      enabled: true
+    schema:
+      printer:
+        enabled: true
+      locations: classpath:graphql/**/
+
+# mybatis配置
+mybatis:
+  # 需要将repo模块中的mapper文件夹标记为resources root
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+

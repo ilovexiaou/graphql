@@ -1,0 +1,13 @@
+
+#查询入口
+type Query {
+    ####### User相关 #########
+    findAllUsers: [User]!
+    findByName(name:String!): [User]!
+}
+######## user 相关 ############
+type User {
+      id: String!
+    name: String!
+      age: Int!
+}
